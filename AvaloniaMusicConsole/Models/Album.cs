@@ -3,6 +3,11 @@
     public class Album 
         : BaseModel
     {
-        public string? Title { get; set; }
+        public Album()
+            : base()
+        {
+            Title = $"{Id}"[..10];
+        }
+        public string? Title { get; private set; } 
     }
 }

@@ -14,6 +14,7 @@ namespace AvaloniaMusicConsole.ViewModels
         private string? _notFoundText;
         private bool _isNotFound;
         private ModelType _selectedModelType;
+        private TemplateViewModelBase _templateViewModel = new AlbumViewModel();
 
         public SearchViewModel()
         {
@@ -29,6 +30,7 @@ namespace AvaloniaMusicConsole.ViewModels
                 IsNotFound = false;
                 IsBusy = true;
                 await Task.Delay(1000);
+                TemplateViewModel = new AlbumViewModel();
                 // SearchResults.Clear();
                 // TODO: ask repository data -> by SearchText property
             }
@@ -38,7 +40,12 @@ namespace AvaloniaMusicConsole.ViewModels
             }
         }
 
-        public ObservableCollection<AlbumViewModel> SearchResults { get; } = [];
+        public TemplateViewModelBase TemplateViewModel
+        { 
+            get => _templateViewModel; 
+            set => this.SetProperty(ref _templateViewModel, value); 
+        }
+        public ObservableCollection<IDataModel> SearchResults { get; } = [];
         
         public string? SearchText
         {

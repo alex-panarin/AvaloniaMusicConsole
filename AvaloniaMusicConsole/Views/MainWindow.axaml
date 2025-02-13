@@ -54,11 +54,12 @@
 					Grid.Row="0" 
 					Grid.Column="1"
 					Margin="10,0,0,0"
-					DataContext="{Binding SearchViewModel}"/>	
+					DataContext="{Binding SearchViewModel}"/>
 				<view:DataTemplateView
 					Grid.Row="1" 
 					Grid.Column="1"
-					Margin="10,0,10,0"/>
+					Margin="10,0,10,0"
+					DataContext="{Binding SearchViewModel.TemplateViewModel}"/>
 			</Grid>
 		</DockPanel>
 	</Panel>    

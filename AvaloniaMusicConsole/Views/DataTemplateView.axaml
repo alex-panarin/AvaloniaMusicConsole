@@ -7,6 +7,7 @@
 			 xmlns:data="using:AvaloniaMusicConsole.DataTemplates"
 			 xmlns:vm="using:AvaloniaMusicConsole.ViewModels"
 			 xmlns:model="using:AvaloniaMusicConsole.Models">
+	
 	<Border Margin="10, 10, 10, 5"
 		BorderBrush="Coral"
 		BorderThickness="2"
@@ -14,32 +15,39 @@
 		VerticalAlignment="Stretch"
 		HorizontalAlignment="Stretch">
 		<Panel>
-			<Panel.DataTemplates>
-				<data:ModelTemplateSelector>
-					<DataTemplate  x:Key="AlbumViewModel" DataType="vm:AlbumViewModel">
-						<ItemsControl 
-							ItemsSource="{Binding Albums}">
-							<ItemsControl.ItemsPanel>
-								<ItemsPanelTemplate>
-									<WrapPanel/>
-								</ItemsPanelTemplate>
-							</ItemsControl.ItemsPanel>
-							<ItemsControl.ItemTemplate>
+			<ContentControl 
+				x:Name="contentControl"
+				Content="{Binding $parent.DataContext}">
+				<ContentControl.ContentTemplate>
+					<data:ModelTemplateSelector>
+						<DataTemplate  x:Key="AlbumViewModel" DataType="vm:AlbumViewModel">
+							<ItemsControl
+								ItemsSource="{Binding Albums}">
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<WrapPanel 
+											Margin="20" 
+											VerticalAlignment="Stretch" 
+											HorizontalAlignment="Stretch"/>
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+								<ItemsControl.ItemTemplate>
 									<DataTemplate DataType="model:Album">
-										<Button />
+										<Button Content="{Binding Title}"/>
 									</DataTemplate>
-							</ItemsControl.ItemTemplate>
-						</ItemsControl>
-					</DataTemplate>
-					<DataTemplate x:Key="ArtistViewModel" DataType="vm:AlbumViewModel">
-						<TextBlock 
-							Text="Nothing to display" 
-							Foreground="Aqua"
-							VerticalAlignment="Center"
-							HorizontalAlignment="Center"/>
-					</DataTemplate>
-				</data:ModelTemplateSelector>
-			</Panel.DataTemplates>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</DataTemplate>
+						<DataTemplate x:Key="ArtistViewModel" DataType="vm:AlbumViewModel">
+							<TextBlock
+								Text="Nothing to display"
+								Foreground="Aqua"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Center"/>
+						</DataTemplate>
+					</data:ModelTemplateSelector>
+				</ContentControl.ContentTemplate>
+			</ContentControl>
 		</Panel>
 	</Border>
 	
