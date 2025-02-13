@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaMusicConsole.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaMusicConsole.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+		xmlns:ctrls="using:AvaloniaMusicConsole.Controls"
+		xmlns:view="using:AvaloniaMusicConsole.Views"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaMusicConsole"
+		TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+		BorderThickness="0"
+		BorderBrush="Transparent"
+		ExtendClientAreaToDecorationsHint="True"
+		ExtendClientAreaTitleBarHeightHint="20"
+		ExtendClientAreaChromeHints="NoChrome"
+		Name="Window">
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	<Panel>
+		<ExperimentalAcrylicBorder 
+			IsHitTestVisible="False"
+			CornerRadius="20"
+			ClipToBounds="True">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+					BackgroundSource="Digger"
+					TintColor="Black"
+					TintOpacity="1"
+					MaterialOpacity="0.65"/>
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+		<DockPanel Margin="5,0,0,0 ">
+			<ctrls:ApplicationLifetime 
+				DockPanel.Dock="Top"
+				VerticalAlignment="Top" 
+				HorizontalAlignment="Left"
+				Width="100"
+				DataContext="{Binding AppViewModel}"/>
+			<Grid Margin="10,10,0,10"
+				  ColumnDefinitions="200, *"
+				  RowDefinitions="50, *">
+			<view:SideBarView 
+				Grid.RowSpan="2" 
+				Grid.Column="0"
+				Height="{Binding $parent.Bounds.Height}"/>
+			<view:SearchView 
+				Grid.Row="0" Grid.Column="1"
+				Margin="10,0,0,0"
+				DataContext="{Binding SearchViewModel}"/>	
+			</Grid>
+		</DockPanel>
+	</Panel>    
+</Window>

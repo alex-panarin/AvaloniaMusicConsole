@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaMusicConsole.Controls.ApplicationLifetime"
+			 xmlns:vm="using:AvaloniaMusicConsole.ViewModels"
+			 x:DataType="vm:AppLifetimeViewModel"
+			 Background="Transparent">
+	<UserControl.Styles>
+		<Style Selector="Button.btn /template/ ContentPresenter">
+			<Setter Property="CornerRadius" Value="10" />
+			<Setter Property="Width" Value="20" />
+			<Setter Property="Height" Value="20" />
+			<Setter Property="MinWidth" Value="20" />
+			<Setter Property="MinHeight" Value="20" />
+			<Setter Property="BorderThickness" Value="0" />
+		</Style>
+		<Style Selector="Button.btn:pointerover /template/ ContentPresenter">
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="Background" Value="{Binding $self.Background}"/>
+		</Style>
+	</UserControl.Styles>
+	<StackPanel Orientation="Horizontal" Spacing="10" Margin="10, 10, 0, 0">
+		<Button Classes="btn" 
+				Background="Orange"
+				Command="{Binding Minimize}" 
+				Name="Minimize"
+			ToolTip.Tip ="Свернуть">
+			<!--<PathIcon Data="{StaticResource arrow_minimize_vertical_regular}" 
+					  Width="14" Height="14"/>-->
+		</Button>
+		<Button Classes="btn" 
+				Background="OrangeRed"
+				Command="{Binding Maximize}"
+				Name="Maximize"
+			ToolTip.Tip ="Развернуть">
+			<!--<PathIcon Data="{StaticResource maximize_regular}" 
+				Width="14" Height="14"/>-->
+		</Button>
+		<Button Classes="btn" 
+				Background="Green" 
+				Command="{Binding Close}"
+				ToolTip.Tip="Закрыть">
+			<!--<PathIcon Data="{StaticResource pane_close_regular}"
+				Width="14" Height="14"/>-->
+		</Button>
+	</StackPanel>
+</UserControl>
