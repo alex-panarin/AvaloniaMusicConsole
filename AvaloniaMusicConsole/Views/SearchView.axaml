@@ -28,35 +28,49 @@
 		<Style Selector="TextBox.txt:focus-within /template/ Border">
 			<Setter Property="BorderBrush" Value="Coral"/>
 		</Style>
+		<Style Selector="ComboBox:pointerover /template/ Border">
+			<Setter Property="BorderBrush" Value="Coral"/>
+		</Style>
 	</UserControl.Styles>
 		<DockPanel HorizontalAlignment="Stretch" Grid.Column="0">
 			<Grid 
-				ColumnDefinitions="*, 80">
+				ColumnDefinitions="120, *, 50">
+				<ComboBox 
+					Margin="10,0,0,0"
+					CornerRadius="10"
+					BorderBrush="Coral"
+					BorderThickness="2"
+					SelectedIndex="0"
+					ItemsSource="{Binding ModelTypes}"
+					SelectedValue="{Binding SelectedModelType}"
+					HorizontalAlignment="Stretch"/>
 				<StackPanel Spacing="2"
 					Margin="10,0,0,0"
+					Grid.Column="1"
 					DockPanel.Dock="Top">
 					<TextBox Classes="txt"
 						CornerRadius="10"
 						BorderBrush="Coral"
 						BorderThickness="2"
 						Text="{Binding SearchText}" 
-						Watermark="Search for Albums...."/>
+						Watermark="{Binding SelectedModelType, StringFormat=Search for {0} ...}"/>
 					<ProgressBar 
 						Foreground="Coral"
 						IsIndeterminate="True" 
 						IsVisible="{Binding IsBusy}"/>
-					<TextBlock Text="{Binding NotFoundText}"
+					<!--<TextBlock Text="{Binding NotFoundText}"
 						Foreground="Coral"
-						IsVisible="{Binding IsNotFound}"/>
+						IsVisible="{Binding IsNotFound}"/>-->
 				</StackPanel>
 				<Button Classes="btn"
-					Grid.Column="1" 
+					Grid.Column="2" 
 					DockPanel.Dock="Top"
 					VerticalAlignment="Top"
-					Margin="10,0,0,0"
+					HorizontalAlignment="Right"
+					Margin="10,0,15,0"
 					Command="{Binding Search}">
 					<PathIcon 
-						Data="{StaticResource search_square_regular}"
+						Data="{StaticResource search_regular}"
 						VerticalAlignment="Stretch"
 						HorizontalAlignment="Stretch"
 						Foreground="Coral"/>

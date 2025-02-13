@@ -2,6 +2,12 @@
 
 namespace AvaloniaMusicConsole.Models
 {
+    public enum ModelType
+    {
+        Music,
+        Album,
+        Artist
+    }
     public class BaseModel
         : IDataModel
     {

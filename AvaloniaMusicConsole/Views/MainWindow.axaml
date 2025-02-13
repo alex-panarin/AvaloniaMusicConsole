@@ -34,7 +34,7 @@
 					MaterialOpacity="0.65"/>
 			</ExperimentalAcrylicBorder.Material>
 		</ExperimentalAcrylicBorder>
-		<DockPanel Margin="5,0,0,0 ">
+		<DockPanel Margin="10,0,0,0 ">
 			<ctrls:ApplicationLifetime 
 				DockPanel.Dock="Top"
 				VerticalAlignment="Top" 
@@ -44,14 +44,21 @@
 			<Grid Margin="10,10,0,10"
 				  ColumnDefinitions="200, *"
 				  RowDefinitions="50, *">
-			<view:SideBarView 
-				Grid.RowSpan="2" 
-				Grid.Column="0"
-				Height="{Binding $parent.Bounds.Height}"/>
-			<view:SearchView 
-				Grid.Row="0" Grid.Column="1"
-				Margin="10,0,0,0"
-				DataContext="{Binding SearchViewModel}"/>	
+				<view:SideBarView
+					VerticalAlignment="Stretch"
+					Margin="0, 2, 0, 4"
+					Grid.RowSpan="2" 
+					Grid.Column="0"
+					DataContext="{Binding SearchViewModel.SearchResults}"/>
+				<view:SearchView 
+					Grid.Row="0" 
+					Grid.Column="1"
+					Margin="10,0,0,0"
+					DataContext="{Binding SearchViewModel}"/>	
+				<view:DataTemplateView
+					Grid.Row="1" 
+					Grid.Column="1"
+					Margin="10,0,10,0"/>
 			</Grid>
 		</DockPanel>
 	</Panel>    

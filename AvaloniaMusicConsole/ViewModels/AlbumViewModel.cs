@@ -1,7 +1,11 @@
-﻿namespace AvaloniaMusicConsole.ViewModels
+﻿using AvaloniaMusicConsole.Models;
+using System.Collections.ObjectModel;
+
+namespace AvaloniaMusicConsole.ViewModels
 {
     public class AlbumViewModel
-        : ViewModelBase
+        : TemplateViewModelBase
     {
+        public ObservableCollection<Album> Albums { get; set; } = [];
     }
 }

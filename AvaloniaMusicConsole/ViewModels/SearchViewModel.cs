@@ -1,8 +1,7 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using AvaloniaMusicConsole.Models;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace AvaloniaMusicConsole.ViewModels
@@ -14,10 +13,12 @@ namespace AvaloniaMusicConsole.ViewModels
         private bool _isBusy;
         private string? _notFoundText;
         private bool _isNotFound;
+        private ModelType _selectedModelType;
 
         public SearchViewModel()
         {
             Search = new RelayCommand(async () => await OnSearch());
+            SelectedModelType = ModelType.Album;
         }
 
         private async Task OnSearch()
@@ -63,5 +64,13 @@ namespace AvaloniaMusicConsole.ViewModels
             set => this.SetProperty(ref _isNotFound, value); 
         }
         public RelayCommand? Search { get; private set; }
+
+        public ObservableCollection<ModelType> ModelTypes { get; } = new (Enum.GetValues<ModelType>());
+
+        public ModelType SelectedModelType 
+        {
+            get => _selectedModelType;
+            set => this.SetProperty(ref _selectedModelType, value); 
+        }
     }
 }

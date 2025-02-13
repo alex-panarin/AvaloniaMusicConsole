@@ -3,7 +3,7 @@ using System;
 
 namespace AvaloniaMusicConsole.ViewModels
 {
-    internal class TemplateViewModelBase
+    public class TemplateViewModelBase
         : ViewModelBase
         , IDataModel
     {

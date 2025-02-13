@@ -4,21 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaMusicConsole.Views.SideBarView"
-			 Height="300"
 			 BorderThickness="0">
 	<Panel>
 		<Border CornerRadius="20" 
-				BorderThickness="4"
-				BorderBrush="Coral">
-			<Border.Background>
+				BorderThickness="2"
+				BorderBrush="Coral"
+				VerticalAlignment="Stretch"
+				HorizontalAlignment="Stretch">
+			<!--<Border.Background>
 				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
 					<GradientStop Color="#FF9A9E" Offset="0.0"/>
 					<GradientStop Color="#FAD0C4" Offset="0.5"/>
 					<GradientStop Color="#FAD1E9" Offset="0.75"/>
 					<GradientStop Color="#FFD1FF" Offset="1.0"/>
 				</LinearGradientBrush>
-			</Border.Background>
+			</Border.Background>-->
+			<WrapPanel/>
 		</Border>
-		
 	</Panel>
 </UserControl>
