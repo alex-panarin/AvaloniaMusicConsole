@@ -11,15 +11,7 @@
 				BorderBrush="Coral"
 				VerticalAlignment="Stretch"
 				HorizontalAlignment="Stretch">
-			<!--<Border.Background>
-				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-					<GradientStop Color="#FF9A9E" Offset="0.0"/>
-					<GradientStop Color="#FAD0C4" Offset="0.5"/>
-					<GradientStop Color="#FAD1E9" Offset="0.75"/>
-					<GradientStop Color="#FFD1FF" Offset="1.0"/>
-				</LinearGradientBrush>
-			</Border.Background>-->
-			<WrapPanel/>
+				<WrapPanel/>
 		</Border>
 	</Panel>
 </UserControl>

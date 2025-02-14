@@ -33,7 +33,15 @@
 								</ItemsControl.ItemsPanel>
 								<ItemsControl.ItemTemplate>
 									<DataTemplate DataType="model:Album">
-										<Button Content="{Binding Title}"/>
+										<Button 
+											Content="{Binding Title}"
+											Foreground="Coral"
+											CornerRadius="10"
+											Height="100"
+											Width="100"
+											Margin="10"
+											VerticalContentAlignment="Center"
+											HorizontalContentAlignment="Center"/>
 									</DataTemplate>
 								</ItemsControl.ItemTemplate>
 							</ItemsControl>
