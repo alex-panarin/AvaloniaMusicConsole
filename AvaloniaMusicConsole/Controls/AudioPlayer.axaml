@@ -26,8 +26,7 @@
 			<Setter Property="HorizontalAlignment" Value="Stretch" />
 		</Style>
 		<Style Selector="PathIcon.icon:pointerover">
-			<Setter Property="Width" Value="{Binding $parent[PathIcon].Bounds.Width, Converter={StaticResource dimentionConverter}}"/>
-			<Setter Property="Height" Value="{Binding $parent[PathIcon].Bounds.Height, Converter={StaticResource dimentionConverter}}"/>
+			<Setter Property="RenderTransform" Value="scale(1.2, 1.2)"/>
 		</Style>
 	</UserControl.Styles>
 	<Panel 
@@ -48,8 +47,7 @@
 						ToolTip.VerticalOffset="10">
 					<PathIcon 
 						Classes="icon"
-						Data="{StaticResource stop_regular}"
-						/> 
+						Data="{StaticResource stop_regular}"/> 
 				</Button>
 				<Button Classes="btn"
 						ToolTip.Tip="Play"
