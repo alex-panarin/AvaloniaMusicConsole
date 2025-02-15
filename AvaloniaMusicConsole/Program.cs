@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia;
+using Avalonia.Logging;
 
 namespace AvaloniaMusicConsole
 {
@@ -17,6 +18,6 @@ namespace AvaloniaMusicConsole
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .WithInterFont()
-                .LogToTrace();
+                .LogToTrace(LogEventLevel.Verbose);
     }
 }

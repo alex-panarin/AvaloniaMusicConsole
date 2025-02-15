@@ -14,21 +14,21 @@
 	
 	<UserControl.Styles>
 		<Style Selector="Button.btn /template/ ContentPresenter">
-			<Setter Property="CornerRadius" Value="10" />
+			<Setter Property="CornerRadius" Value="0" />
 			<Setter Property="BorderThickness" Value="0"/>
 			<Setter Property="Background" Value="Transparent"/>
 		</Style>
 		<Style Selector="Button.btn:pointerover /template/ ContentPresenter">
-			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="BorderThickness" Value="0" />
 			<Setter Property="Background" Value="Transparent"/>
 		</Style>
-		<Style Selector="TextBox.txt:pointerover /template/ Border">
+		<Style Selector="TextBox.txt:pointerover /template/Border">
 			<Setter Property="BorderBrush" Value="Coral"/>
 		</Style>
-		<Style Selector="TextBox.txt:focus-within /template/ Border">
+		<Style Selector="TextBox.txt:focus-within /template/Border">
 			<Setter Property="BorderBrush" Value="Coral"/>
 		</Style>
-		<Style Selector="ComboBox:pointerover /template/ Border">
+		<Style Selector="ComboBox:pointerover /template/Border">
 			<Setter Property="BorderBrush" Value="Coral"/>
 		</Style>
 	</UserControl.Styles>
@@ -58,9 +58,6 @@
 						Foreground="Coral"
 						IsIndeterminate="True" 
 						IsVisible="{Binding IsBusy}"/>
-					<!--<TextBlock Text="{Binding NotFoundText}"
-						Foreground="Coral"
-						IsVisible="{Binding IsNotFound}"/>-->
 				</StackPanel>
 				<Button Classes="btn"
 					Grid.Column="2" 
@@ -69,7 +66,7 @@
 					HorizontalAlignment="Right"
 					Margin="10,0,15,0"
 					Command="{Binding Search}">
-					<PathIcon 
+					<PathIcon  
 						Data="{StaticResource search_regular}"
 						VerticalAlignment="Stretch"
 						HorizontalAlignment="Stretch"

@@ -1,0 +1,85 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:cnv="using:AvaloniaMusicConsole.Controls.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaMusicConsole.Controls.AudioPlayer">
+	<UserControl.Resources>
+		<cnv:DimentionConverter x:Key="dimentionConverter"/>
+	</UserControl.Resources>
+	<Design.Height>70</Design.Height>
+	<Design.Width>250</Design.Width>
+	<UserControl.Styles>
+		<Style Selector="Button.btn /template/ ContentPresenter">
+			<Setter Property="CornerRadius" Value="10" />
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Background" Value="Transparent"/>
+		</Style>
+		<Style Selector="Button.btn:pointerover /template/ ContentPresenter">
+			<Setter Property="BorderThickness" Value="0" />
+			<Setter Property="Background" Value="Transparent"/>
+		</Style>
+		<Style Selector="PathIcon.icon">
+			<Setter Property="Foreground" Value="Coral" />
+			<Setter Property="VerticalAlignment" Value="Stretch" />
+			<Setter Property="HorizontalAlignment" Value="Stretch" />
+		</Style>
+		<Style Selector="PathIcon.icon:pointerover">
+			<Setter Property="Width" Value="{Binding $parent[PathIcon].Bounds.Width, Converter={StaticResource dimentionConverter}}"/>
+			<Setter Property="Height" Value="{Binding $parent[PathIcon].Bounds.Height, Converter={StaticResource dimentionConverter}}"/>
+		</Style>
+	</UserControl.Styles>
+	<Panel 
+		Background="Transparent">
+		<Border
+			BorderBrush="Coral"
+			BorderThickness="2"
+			CornerRadius="10"
+			VerticalAlignment="Stretch"
+			HorizontalAlignment="Stretch"
+			Margin="10">
+			<StackPanel
+				HorizontalAlignment="Center"
+				Orientation="Horizontal" 
+				Spacing="5">
+				<Button Classes="btn"
+						ToolTip.Tip="Stop"
+						ToolTip.VerticalOffset="10">
+					<PathIcon 
+						Classes="icon"
+						Data="{StaticResource stop_regular}"
+						/> 
+				</Button>
+				<Button Classes="btn"
+						ToolTip.Tip="Play"
+						ToolTip.VerticalOffset="10">
+					<PathIcon
+						Classes="icon"
+						Data="{StaticResource play_regular}"/>
+				</Button>
+				<Button Classes="btn"
+						ToolTip.Tip="Pause"
+						ToolTip.VerticalOffset="10">
+					<PathIcon 
+						Classes="icon"
+						Data="{StaticResource pause_regular}"/>
+				</Button>
+				<Button Classes="btn"
+						ToolTip.Tip="Prev"
+						ToolTip.VerticalOffset="10">
+					<PathIcon 
+						Classes="icon"
+						Data="{StaticResource caret_left_regular}"/>
+				</Button>
+				<Button Classes="btn"
+						ToolTip.Tip="Next"
+						ToolTip.VerticalOffset="10">
+					<PathIcon
+						Classes="icon"
+						Data="{StaticResource caret_right_regular}"/>
+				</Button>
+			</StackPanel>
+		</Border>
+	</Panel>
+</UserControl>

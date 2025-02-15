@@ -22,28 +22,22 @@
 		</Style>
 	</UserControl.Styles>
 	<StackPanel Orientation="Horizontal" Spacing="10" Margin="10, 10, 0, 0">
+		<Button Classes="btn"
+				Background="OrangeRed"
+				Command="{Binding Close}"
+				Name="Maximize"
+				ToolTip.Tip ="Закрыть">
+		</Button>
 		<Button Classes="btn" 
 				Background="Orange"
 				Command="{Binding Minimize}" 
 				Name="Minimize"
-			ToolTip.Tip ="Свернуть">
-			<!--<PathIcon Data="{StaticResource arrow_minimize_vertical_regular}" 
-					  Width="14" Height="14"/>-->
-		</Button>
-		<Button Classes="btn" 
-				Background="OrangeRed"
-				Command="{Binding Maximize}"
-				Name="Maximize"
-			ToolTip.Tip ="Развернуть">
-			<!--<PathIcon Data="{StaticResource maximize_regular}" 
-				Width="14" Height="14"/>-->
+				ToolTip.Tip ="Свернуть">
 		</Button>
 		<Button Classes="btn" 
 				Background="Green" 
-				Command="{Binding Close}"
-				ToolTip.Tip="Закрыть">
-			<!--<PathIcon Data="{StaticResource pane_close_regular}"
-				Width="14" Height="14"/>-->
+				Command="{Binding Maximize}"
+				ToolTip.Tip="Развернуть">
 		</Button>
 	</StackPanel>
 </UserControl>
