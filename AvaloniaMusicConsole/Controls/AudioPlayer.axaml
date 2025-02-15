@@ -2,14 +2,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 xmlns:cnv="using:AvaloniaMusicConsole.Controls.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaMusicConsole.Controls.AudioPlayer">
-	<UserControl.Resources>
-		<cnv:DimentionConverter x:Key="dimentionConverter"/>
-	</UserControl.Resources>
+	
 	<Design.Height>70</Design.Height>
 	<Design.Width>250</Design.Width>
+	
 	<UserControl.Styles>
 		<Style Selector="Button.btn /template/ ContentPresenter">
 			<Setter Property="CornerRadius" Value="10" />

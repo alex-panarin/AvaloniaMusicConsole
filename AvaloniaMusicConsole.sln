@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMusicConsole", "Ava
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMusicConsole.Player", "AvaloniaMusicConsole.Player\AvaloniaMusicConsole.Player.csproj", "{55531F18-8F94-4E1B-880C-7A6DBC990B7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMusicConsole.Data", "AvaloniaMusicConsole.Data\AvaloniaMusicConsole.Data.csproj", "{F1828147-C103-4ABB-A1A6-24647C418A03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMusicConsole.Data.Tests", "AvaloniaMusicConsole.Data.Tests\AvaloniaMusicConsole.Data.Tests.csproj", "{3DADF7EF-E7C6-4EB0-971D-06142B5A2EB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{55531F18-8F94-4E1B-880C-7A6DBC990B7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55531F18-8F94-4E1B-880C-7A6DBC990B7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55531F18-8F94-4E1B-880C-7A6DBC990B7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1828147-C103-4ABB-A1A6-24647C418A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1828147-C103-4ABB-A1A6-24647C418A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1828147-C103-4ABB-A1A6-24647C418A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1828147-C103-4ABB-A1A6-24647C418A03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DADF7EF-E7C6-4EB0-971D-06142B5A2EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DADF7EF-E7C6-4EB0-971D-06142B5A2EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DADF7EF-E7C6-4EB0-971D-06142B5A2EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DADF7EF-E7C6-4EB0-971D-06142B5A2EB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
