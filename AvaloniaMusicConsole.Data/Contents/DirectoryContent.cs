@@ -24,21 +24,15 @@ namespace AvaloniaMusicConsole.Data.Contents
             return await Task.FromResult( JObject.FromObject(this).ToString()); 
         }
 
-        protected override async Task<IEnumerable<IContent>> GetContentsAsync()
+        protected override async IAsyncEnumerable<IContent> GetContentsAsync()
         {
-            return await Task.Factory.StartNew( (val) =>
+            foreach (var path in Directory.EnumerateFileSystemEntries(Url, "*.*", SearchOption.TopDirectoryOnly))
             {
-                string url = (string)val!;
-
-                return Directory.EnumerateFileSystemEntries(url, "*.*", SearchOption.TopDirectoryOnly)
-                    .Select( path =>
-                    {
-                        return (IContent) (File.GetAttributes(path).HasFlag(FileAttributes.Directory)
-                            ? new DirectoryContent(path)
-                            : new FileContent(path));
-                    });
+                await Task.Yield();
+                yield return File.GetAttributes(path).HasFlag(FileAttributes.Directory)
+                     ? new DirectoryContent(path)
+                     : new FileContent(path);
             }
-            , Url);
         }
     }
 }

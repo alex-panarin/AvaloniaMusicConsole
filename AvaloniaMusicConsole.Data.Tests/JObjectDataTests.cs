@@ -30,18 +30,11 @@ namespace AvaloniaMusicConsole.Data.Tests
         {
             var content = new DirectoryContent(url);
 
-            var data = await content.GetValue();
-
-            Assert.That(data, Is.Not.Null);
-
-            Debug.WriteLine(data);
-
-            data = $"[{string.Join(",", (await content.GetValues())
-                .Select(v => v.GetValue().Result))}]";
-
-            Assert.That(data, Is.Not.Null);
-
-            Debug.WriteLine(data);
+            await foreach (var value in content.GetValues())
+            {
+                Assert.That(value, Is.Not.Null);
+                Debug.WriteLine(value);
+            }
         }
     }
 }

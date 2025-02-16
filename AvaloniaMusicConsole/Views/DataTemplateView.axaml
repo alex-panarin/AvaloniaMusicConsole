@@ -22,7 +22,7 @@
 					<data:ModelTemplateSelector>
 						<DataTemplate  x:Key="AlbumViewModel" DataType="vm:AlbumViewModel">
 							<ItemsControl
-								ItemsSource="{Binding Albums}">
+								ItemsSource="{Binding Albums , UpdateSourceTrigger=PropertyChanged} ">
 								<ItemsControl.ItemsPanel>
 									<ItemsPanelTemplate>
 										<WrapPanel 

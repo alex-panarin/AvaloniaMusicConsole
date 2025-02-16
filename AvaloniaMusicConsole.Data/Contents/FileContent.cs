@@ -21,9 +21,10 @@ namespace AvaloniaMusicConsole.Data.Contents
             return await Task.FromResult(JObject.FromObject(this).ToString());
         }
 
-        protected override async Task<IEnumerable<IContent>> GetContentsAsync()
+        protected override async IAsyncEnumerable<IContent> GetContentsAsync()
         {
-            return await Task.FromResult(Enumerable.Empty<IContent>());
+            await Task.Yield();
+            yield return default!;
         }
     }
 }

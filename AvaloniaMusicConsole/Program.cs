@@ -18,6 +18,6 @@ namespace AvaloniaMusicConsole
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .WithInterFont()
-                .LogToTrace(LogEventLevel.Verbose);
+                .LogToTrace(/*LogEventLevel.Verbose*/);
     }
 }

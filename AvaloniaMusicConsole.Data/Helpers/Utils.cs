@@ -2,7 +2,7 @@
 
 namespace AvaloniaMusicConsole.Data.Helpers
 {
-    internal static class Utils
+    public static class Utils
     {
         public static void ForEach<T>(this IEnumerable<T> values, Action<T> action)
         {
@@ -12,9 +12,15 @@ namespace AvaloniaMusicConsole.Data.Helpers
             while (en.MoveNext()) 
                 action(en.Current);
         }
+
+        public static bool IsEmpty<T>(this IEnumerable<T> values)
+            => values == null || values.Any() == false;
+
+        public static bool IsNotEmpty<T>(this IEnumerable<T> values)
+            => values != null && values.Any();
     }
 
-    public static class JUtils
+    internal static class JUtils
     {
         public const string DIRECTORY = "directory";
         public const string FILE = "file";

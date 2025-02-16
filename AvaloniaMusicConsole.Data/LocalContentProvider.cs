@@ -1,19 +1,28 @@
-﻿using AvaloniaMusicConsole.Data.Interfaces;
+﻿using AvaloniaMusicConsole.Data.Contents;
+using AvaloniaMusicConsole.Data.Helpers;
+using AvaloniaMusicConsole.Data.Interfaces;
 
-namespace AvaloniaMusicConsole.Player
+namespace AvaloniaMusicConsole.Data
 {
-    internal class LocalContentProvider
-        : IContentPrivider
+    public class LocalContentProvider
+        : IContentProvider
     {
-
-        public Task<IContent?> GetContent(IContent content)
+        public async IAsyncEnumerable<IContent> GetContents(IContent content)
         {
-            throw new NotImplementedException();
+            var contentValue = await content.GetValue();
+
+            if (contentValue.IsEmpty())
+                yield return default!;
+
+            await foreach(var item in content.GetValues())
+            {
+                yield return item;
+            }
         }
 
-        public Task<IEnumerable<IContent>> GetContents()
+        public IAsyncEnumerable<IContent> GetContents(string root)
         {
-            throw new NotImplementedException();
+            return GetContents(new DirectoryContent(root));
         }
     }
 }

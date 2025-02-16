@@ -1,5 +1,4 @@
 ﻿using AvaloniaMusicConsole.Data.Interfaces;
-using System.Text.Json.Serialization;
 
 namespace AvaloniaMusicConsole.Data.Contents
 {
@@ -20,9 +19,9 @@ namespace AvaloniaMusicConsole.Data.Contents
 
         protected string Url { get; }
         
-        public Task<IEnumerable<IContent>> GetValues() => GetContentsAsync();
+        public IAsyncEnumerable<IContent> GetValues() => GetContentsAsync();
 
-        protected abstract Task<IEnumerable<IContent>> GetContentsAsync();
+        protected abstract IAsyncEnumerable<IContent> GetContentsAsync();
         
     }
 }

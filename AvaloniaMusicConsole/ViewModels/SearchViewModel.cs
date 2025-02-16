@@ -1,4 +1,6 @@
-﻿using AvaloniaMusicConsole.Models;
+﻿using AvaloniaMusicConsole.Data;
+using AvaloniaMusicConsole.Models;
+using AvaloniaMusicConsole.Repositories;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.ObjectModel;
@@ -14,12 +16,14 @@ namespace AvaloniaMusicConsole.ViewModels
         private string? _notFoundText;
         private bool _isNotFound;
         private ModelType _selectedModelType;
-        private TemplateViewModelBase _templateViewModel = new AlbumViewModel();
+        private TemplateViewModelBase _templateViewModel;
 
         public SearchViewModel()
         {
             Search = new RelayCommand(async () => await OnSearch());
             SelectedModelType = ModelType.Album;
+            RootPath = @"E:\Music";
+            TemplateViewModel = new AlbumViewModel(new DataRepository(new LocalContentProvider()), RootPath);
         }
 
         private async Task OnSearch()
@@ -29,17 +33,17 @@ namespace AvaloniaMusicConsole.ViewModels
                 NotFoundText = string.Empty;
                 IsNotFound = false;
                 IsBusy = true;
-                await Task.Delay(1000);
-                TemplateViewModel = new AlbumViewModel();
-                // SearchResults.Clear();
-                // TODO: ask repository data -> by SearchText property
+                //await Task.Delay(1000);
+                SearchResults.Clear();
+                await ((AlbumViewModel)TemplateViewModel).LoadDataAsync();
             }
-            finally 
-            { 
+            finally
+            {
                 IsBusy = false;
             }
         }
 
+        public string RootPath { get; set; }    
         public TemplateViewModelBase TemplateViewModel
         { 
             get => _templateViewModel; 
