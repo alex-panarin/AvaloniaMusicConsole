@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System.IO;
 
 namespace AvaloniaMusicConsole.Models
 {
     public class Album 
         : BaseModel
     {
-        public Album(IEnumerable<Track>? tracks)
+        public Album()
             : base()
         {
-            Tracks = tracks;
+            IsDirectory = true;
         }
 
         public string? Title => Name;
-        public IEnumerable<Track>? Tracks { get; set; }
+        
     }
 }

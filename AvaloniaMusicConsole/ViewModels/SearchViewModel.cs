@@ -16,14 +16,14 @@ namespace AvaloniaMusicConsole.ViewModels
         private string? _notFoundText;
         private bool _isNotFound;
         private ModelType _selectedModelType;
-        private TemplateViewModelBase _templateViewModel;
+        private ViewModelBase _templateViewModel;
 
         public SearchViewModel()
         {
             Search = new RelayCommand(async () => await OnSearch());
             SelectedModelType = ModelType.Album;
             RootPath = @"E:\Music";
-            TemplateViewModel = new AlbumViewModel(new DataRepository(new LocalContentProvider()), RootPath);
+            RootAlbum = new Album() {Name = RootPath };
         }
 
         private async Task OnSearch()
@@ -35,7 +35,12 @@ namespace AvaloniaMusicConsole.ViewModels
                 IsBusy = true;
                 //await Task.Delay(1000);
                 SearchResults.Clear();
-                await ((AlbumViewModel)TemplateViewModel).LoadDataAsync();
+
+                var album = new AlbumViewModel(RootAlbum, new DataRepository(new LocalContentProvider()));
+                await album.LoadDataAsync();
+
+                TemplateViewModel = album;
+
             }
             finally
             {
@@ -43,8 +48,9 @@ namespace AvaloniaMusicConsole.ViewModels
             }
         }
 
-        public string RootPath { get; set; }    
-        public TemplateViewModelBase TemplateViewModel
+        public string RootPath { get; set; }
+        public Album RootAlbum { get; private set; }
+        public ViewModelBase TemplateViewModel
         { 
             get => _templateViewModel; 
             set => this.SetProperty(ref _templateViewModel, value); 

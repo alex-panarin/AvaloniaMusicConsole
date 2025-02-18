@@ -32,7 +32,7 @@
 									</ItemsPanelTemplate>
 								</ItemsControl.ItemsPanel>
 								<ItemsControl.ItemTemplate>
-									<DataTemplate DataType="model:Album">
+									<DataTemplate DataType="vm:AlbumViewModel">
 										<Button 
 											CornerRadius="10"
 											Height="100"
@@ -54,9 +54,19 @@
 						<DataTemplate x:Key="ArtistViewModel" DataType="vm:AlbumViewModel">
 							<TextBlock
 								Text="Nothing to display"
-								Foreground="Aqua"
+								Foreground="LightCoral"
 								VerticalAlignment="Center"
 								HorizontalAlignment="Center"/>
+						</DataTemplate>
+						<DataTemplate x:Key="TrackViewModel" DataType="vm:TrackViewModel">
+							<ListBox 
+									 SelectionMode="Single">
+								<ListBox.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel Spacing="5"/>
+									</ItemsPanelTemplate>
+								</ListBox.ItemsPanel>
+							</ListBox>
 						</DataTemplate>
 					</data:ModelTemplateSelector>
 				</ContentControl.ContentTemplate>

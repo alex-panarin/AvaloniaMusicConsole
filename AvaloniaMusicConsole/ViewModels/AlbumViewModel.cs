@@ -1,36 +1,55 @@
-﻿using AvaloniaMusicConsole.Models;
+﻿using Avalonia.Rendering.Composition;
+using AvaloniaMusicConsole.Models;
 using AvaloniaMusicConsole.Repositories;
-using System.Collections.ObjectModel;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace AvaloniaMusicConsole.ViewModels
 {
     public class AlbumViewModel
-        : TemplateViewModelBase
+        : TemplateViewModelBase<Album>
     {
         private readonly IDataRepository repository;
-        private readonly string path;
 
-        public AlbumViewModel(IDataRepository repository, string path)
+        public AlbumViewModel(Album root, IDataRepository repository)
+            : base(root)
         {
             this.repository = repository;
-            this.path = path;
         }
-        public ObservableCollectionEx<Album> Albums { get; set; } = [];
 
-        public async Task LoadDataAsync()
+        public string? Title
+        {
+            get => Model.Title;
+        }
+        public ObservableCollectionEx<AlbumViewModel> Albums { get; set; } = [];
+        public ObservableCollectionEx<TrackViewModel> Tracks{ get; set; } = [];
+
+        public override async Task LoadDataAsync()
         {
             using (Albums.LockChangedEvent())
             {
-                Albums.Clear();
-
-                await foreach (var item in repository.GetModels(path))
+                using (Tracks.LockChangedEvent())
                 {
-                    if (item is Album album)
-                        Albums.Add(album);
+                    Albums.Clear();
+                    Tracks.Clear();
+
+                    await foreach (var item in repository.GetModels(Model.Name))
+                    {
+                        if (item is Album album)
+                            Albums.Add(CreateViewModel(album));
+                        else if (item is Track track)
+                            Tracks.Add(CreateViewModel(track));
+                    }
                 }
             }
         }
+
+        protected TrackViewModel CreateViewModel(Track model)
+            => new TrackViewModel(model, repository);
+
+        protected override AlbumViewModel CreateViewModel(Album model)
+            => new AlbumViewModel(model, repository);
+        
     }
 
 }
