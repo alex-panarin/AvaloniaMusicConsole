@@ -26,13 +26,30 @@ namespace AvaloniaMusicConsole.Data.Contents
 
         protected override async IAsyncEnumerable<IContent> GetContentsAsync()
         {
-            foreach (var path in Directory.EnumerateFileSystemEntries(Url, "*.*", SearchOption.TopDirectoryOnly))
+            await Task.Yield();
+
+            var flags = new[]
             {
-                await Task.Yield();
+                FileAttributes.Hidden,
+                FileAttributes.System, 
+                FileAttributes.ReparsePoint
+            };
+            foreach (var path in Directory.EnumerateFileSystemEntries(Url, "*.*", SearchOption.TopDirectoryOnly)
+                .Where(p =>
+                {
+                    var attr = File.GetAttributes(p);
+                    return flags.All(f => attr.HasFlag(f) == false);
+                }))
+            {
                 yield return File.GetAttributes(path).HasFlag(FileAttributes.Directory)
                      ? new DirectoryContent(path)
                      : new FileContent(path);
             }
+        }
+
+        protected override Stream GetStreamInternal()
+        {
+            throw new NotImplementedException();
         }
     }
 }

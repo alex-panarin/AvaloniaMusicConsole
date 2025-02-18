@@ -49,7 +49,7 @@ namespace AvaloniaMusicConsole.ViewModels
             get => _templateViewModel; 
             set => this.SetProperty(ref _templateViewModel, value); 
         }
-        public ObservableCollection<IDataModel> SearchResults { get; } = [];
+        public ObservableCollectionEx<IDataModel> SearchResults { get; } = [];
         
         public string? SearchText
         {

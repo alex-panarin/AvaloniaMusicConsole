@@ -14,7 +14,6 @@ namespace AvaloniaMusicConsole.Models
             if (value.IsEmpty()) 
                 return default;
 
-            await Task.Yield();
             return CreateModel(JObject.Parse(value));
 
         }

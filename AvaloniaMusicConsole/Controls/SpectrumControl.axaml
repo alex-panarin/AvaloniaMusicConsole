@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="220" d:DesignHeight="200"
+             x:Class="AvaloniaMusicConsole.Controls.SpectrumControl"
+			 x:CompileBindings="True"
+			 Name="spectrumControl">
+	
+	<UserControl.Styles>
+		<Style Selector="StackPanel.container">
+			<Setter Property="RenderTransform">
+				<RotateTransform Angle="180"/>
+			</Setter>
+			<Setter Property="Width" Value="20"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="Orientation" Value="Vertical"/>
+		</Style>
+		<Style Selector="Rectangle.bin">
+			<Setter Property="Width" Value="20"/>
+			<Setter Property="Height" Value="{Binding ElementName=spectrumControl, Path=HeightOfMarker}"/>
+			<Setter Property="Margin" Value="{Binding ElementName=spectrumControl, Path=DiscreteOfMarker}"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Styles>
+	
+	<Border BorderBrush="Transparent"
+				BorderThickness="0"
+				Margin="2, 2">
+	<StackPanel VerticalAlignment="Stretch"
+				HorizontalAlignment="Stretch"
+				Orientation="Horizontal"
+				Background="Transparent"
+				Spacing="2"
+				Name="container">
+	</StackPanel>
+	</Border>
+	
+</UserControl>

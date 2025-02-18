@@ -22,6 +22,9 @@ namespace AvaloniaMusicConsole.Data.Contents
         public IAsyncEnumerable<IContent> GetValues() => GetContentsAsync();
 
         protected abstract IAsyncEnumerable<IContent> GetContentsAsync();
-        
+
+        public Stream GetStream() => GetStreamInternal();
+
+        protected abstract Stream GetStreamInternal();
     }
 }

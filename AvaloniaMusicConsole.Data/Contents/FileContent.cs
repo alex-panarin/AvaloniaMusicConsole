@@ -26,5 +26,11 @@ namespace AvaloniaMusicConsole.Data.Contents
             await Task.Yield();
             yield return default!;
         }
+
+        protected override Stream GetStreamInternal() 
+            => File.Exists(Url) 
+                ? File.OpenRead(Url)
+                : throw new FileNotFoundException(Url);
+        
     }
 }

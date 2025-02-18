@@ -10,5 +10,6 @@
     {
         Task<string> GetValue();
         IAsyncEnumerable<IContent> GetValues();
+        Stream GetStream();
     }
 }

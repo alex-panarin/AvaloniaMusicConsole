@@ -34,14 +34,19 @@
 								<ItemsControl.ItemTemplate>
 									<DataTemplate DataType="model:Album">
 										<Button 
-											Content="{Binding Title}"
-											Foreground="Coral"
 											CornerRadius="10"
 											Height="100"
 											Width="100"
 											Margin="10"
 											VerticalContentAlignment="Center"
-											HorizontalContentAlignment="Center"/>
+											HorizontalContentAlignment="Center">
+											<TextBlock 
+												Foreground="Coral"
+												Background="Transparent"
+												Text="{Binding Title}"
+												TextAlignment="DetectFromContent" 
+												TextWrapping="WrapWithOverflow"/>
+										</Button>
 									</DataTemplate>
 								</ItemsControl.ItemTemplate>
 							</ItemsControl>

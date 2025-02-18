@@ -16,7 +16,7 @@ namespace AvaloniaMusicConsole.ViewModels
             this.repository = repository;
             this.path = path;
         }
-        public ObservableCollectionEx<Album> Albums { get; set; } = [];// = new (new []{new Album(), new Album()});
+        public ObservableCollectionEx<Album> Albums { get; set; } = [];
 
         public async Task LoadDataAsync()
         {

@@ -35,7 +35,7 @@ namespace AvaloniaMusicConsole.ViewModels
             }
         }
 
-        private bool LockRaiseEvent { get; set; }
+        private bool LockRaiseEvent { get; set; } = false;
         private void RaiseCollectionChanged()
         {
             this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));

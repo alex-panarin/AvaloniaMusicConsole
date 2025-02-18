@@ -1,5 +1,6 @@
 ﻿using AvaloniaMusicConsole.Data.Interfaces;
 using AvaloniaMusicConsole.Models;
+using System;
 using System.Collections.Generic;
 
 namespace AvaloniaMusicConsole.Repositories
@@ -17,7 +18,8 @@ namespace AvaloniaMusicConsole.Repositories
 
         public DataRepository(IContentProvider contentProvider) 
         {
-            this.contentProvider = contentProvider;
+            this.contentProvider = contentProvider 
+                ?? throw new ArgumentNullException(nameof(contentProvider));
         }
 
         public async IAsyncEnumerable<BaseModel?> GetModels(string path)
@@ -34,13 +36,13 @@ namespace AvaloniaMusicConsole.Repositories
 
             await foreach (IContent content in contentProvider.GetContents(path))
             {
-                var item = await content.CreateModel(); 
-                if(item != null)
-                    queue.Enqueue(item);
+                var model = await content.CreateModel(); 
+                if(model != null)
+                    queue.Enqueue(model);
             }
-            while (queue.Count > 0)
+            while (queue.TryDequeue(out var model))
             {
-                yield return queue.Dequeue();
+                yield return model;
             }
         }
     }

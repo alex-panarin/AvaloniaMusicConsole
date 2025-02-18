@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:ctrl="using:AvaloniaMusicConsole.Controls"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="400"
              x:Class="AvaloniaMusicConsole.Views.SideBarView"
 			 BorderThickness="0">
 	<Panel>
@@ -12,12 +12,33 @@
 				BorderBrush="Coral"
 				VerticalAlignment="Stretch"
 				HorizontalAlignment="Stretch">
-				<Panel>
-					<ctrl:AudioPlayer 
-						HorizontalAlignment="Center"
-						VerticalAlignment="Bottom"
-						Height="70"
-						Width="250"/>
+			<Panel>
+			<ItemsControl
+				VerticalAlignment="Stretch">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<VirtualizingStackPanel
+							Orientation="Vertical"
+							ClipToBounds="True"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+			<StackPanel 
+				VerticalAlignment="Bottom"
+				Spacing="1">
+				<ctrl:SpectrumControl
+					HorizontalAlignment="Center"
+					LightTheme="True"
+					DiscreteOfMarker="0"/>
+				<ctrl:AudioPlayer 
+					HorizontalAlignment="Center"
+					VerticalAlignment="Bottom"
+					Height="70"
+					Width="250"/>
+			</StackPanel>
 				</Panel>
 		</Border>
 	</Panel>
