@@ -1,6 +1,5 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:AvaloniaMusicConsole.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -8,6 +7,7 @@
         x:DataType="vm:MainWindowViewModel"
 		xmlns:ctrls="using:AvaloniaMusicConsole.Controls"
 		xmlns:view="using:AvaloniaMusicConsole.Views"
+		xmlns:vm="using:AvaloniaMusicConsole.ViewModels"
         Icon="/Assets/avalonia-logo.ico"
         Title="AvaloniaMusicConsole"
 		TransparencyLevelHint="AcrylicBlur"
@@ -42,24 +42,25 @@
 				Width="100"
 				DataContext="{Binding AppViewModel}"/>
 			<Grid Margin="10,20,0,10"
-				  ColumnDefinitions="250, *"
+				  ColumnDefinitions="180, *"
 				  RowDefinitions="50, *">
 				<view:SideBarView
 					VerticalAlignment="Stretch"
 					Margin="0, 2, 0, 4"
 					Grid.RowSpan="2" 
 					Grid.Column="0"
-					DataContext="{Binding SearchViewModel.SearchResults}"/>
+					DataContext="{Binding SearchViewModel.AlbumViewModel}"/>
 				<view:SearchView 
 					Grid.Row="0" 
 					Grid.Column="1"
 					Margin="10,0,0,0"
-					DataContext="{Binding SearchViewModel}"/>
+					DataContext="{Binding SearchViewModel}"
+					/>
 				<view:DataTemplateView
 					Grid.Row="1" 
 					Grid.Column="1"
 					Margin="10,0,10,0"
-					DataContext="{Binding SearchViewModel.TemplateViewModel}"/>
+					DataContext="{Binding SearchViewModel.AlbumViewModel}"/>
 			</Grid>
 		</DockPanel>
 	</Panel>    

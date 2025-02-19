@@ -9,6 +9,6 @@ namespace AvaloniaMusicConsole.Views
         {
             InitializeComponent();
         }
-
+       
     }
 }

@@ -1,7 +1,7 @@
-using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using AvaloniaMusicConsole.ViewModels;
+using System;
 
 namespace AvaloniaMusicConsole
 {
@@ -15,6 +15,12 @@ namespace AvaloniaMusicConsole
 
             var name = param.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
             var type = Type.GetType(name);
+
+            if (type == null)
+            {
+                name = name.Replace("Views", "Controls", StringComparison.Ordinal);
+                type = Type.GetType(name);
+            }
 
             if (type != null)
             {

@@ -3,43 +3,61 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:ctrl="using:AvaloniaMusicConsole.Controls"
+			 xmlns:vm="using:AvaloniaMusicConsole.ViewModels"
              mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="400"
              x:Class="AvaloniaMusicConsole.Views.SideBarView"
-			 BorderThickness="0">
+			 BorderThickness="0"
+			 x:DataType="vm:AlbumViewModel">
+	<UserControl.Styles>
+		<Style Selector="ListBox.side ListBoxItem">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="CornerRadius" Value="10"/>
+			<Setter Property="Width" Value="100"/>
+			<Setter Property="Height" Value="100"/>
+			<Setter Property="Padding" Value="0"/>
+		</Style>
+	</UserControl.Styles>
 	<Panel>
 		<Border CornerRadius="20" 
 				BorderThickness="2"
 				BorderBrush="Coral"
 				VerticalAlignment="Stretch"
 				HorizontalAlignment="Stretch">
-			<Panel>
-			<ItemsControl
-				VerticalAlignment="Stretch">
-				<ItemsControl.ItemsPanel>
+			<ListBox 
+				Classes="side"
+				VerticalAlignment="Stretch"
+				HorizontalAlignment="Stretch"
+				SelectionMode="Single"
+				Margin="10"
+				CornerRadius="10"
+				BorderBrush="Transparent"
+				ScrollViewer.VerticalScrollBarVisibility="Auto"
+				ItemsSource="{Binding Albums}"
+				SelectedItem="{Binding SelectedAlbum, Mode=TwoWay}">
+				<ListBox.ItemsPanel>
 					<ItemsPanelTemplate>
-						<VirtualizingStackPanel
-							Orientation="Vertical"
-							ClipToBounds="True"/>
+						<StackPanel 
+							Spacing="10"
+							Background="Transparent"
+							Focusable="False"/>
 					</ItemsPanelTemplate>
-				</ItemsControl.ItemsPanel>
-				<ItemsControl.ItemTemplate>
-					
-				</ItemsControl.ItemTemplate>
-			</ItemsControl>
-			<StackPanel 
-				VerticalAlignment="Bottom"
-				Spacing="1">
+				</ListBox.ItemsPanel>
+			</ListBox>
+			<!--<StackPanel 
+				Orientation="Vertical"
+				Spacing="1"
+				VerticalAlignment="Stretch">
 				<ctrl:SpectrumControl
 					HorizontalAlignment="Center"
 					LightTheme="True"
-					DiscreteOfMarker="0"/>
-				<ctrl:AudioPlayer 
+					DiscreteOfMarker="0"
+					VerticalAlignment="Bottom"/>
+				<ctrl:AudioPlayer
 					HorizontalAlignment="Center"
 					VerticalAlignment="Bottom"
 					Height="70"
 					Width="250"/>
-			</StackPanel>
-				</Panel>
+			</StackPanel>-->
 		</Border>
 	</Panel>
 </UserControl>

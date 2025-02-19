@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="120" d:DesignHeight="120"
+             x:Class="AvaloniaMusicConsole.Controls.AlbumView"
+			 xmlns:vm="using:AvaloniaMusicConsole.ViewModels"
+			 x:DataType="vm:AlbumViewModel"
+			 CornerRadius="10"
+			 Background="Black"
+			 Opacity="0.7"
+			 ClipToBounds="True"
+			 Width="100"
+			 Height="100">
+	<Border 
+		CornerRadius="10"
+		ClipToBounds="True"
+		Width="{Binding $parent.Width}"
+		Height="{Binding $parent.Height}"
+		Margin="10">
+		<Panel>
+			<!--<Image 
+				Width="100" 
+				Stretch="Uniform"/>-->
+			<Panel>
+				<PathIcon 
+					Height="50"
+					Width="50"
+					Data="{StaticResource music_regular_2}"
+					Foreground="Gray"/>
+				<TextBlock
+					Text="{Binding Title}"
+					Foreground="Coral"
+					TextWrapping="Wrap"
+					TextAlignment="Center"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Center"/>
+			</Panel>
+		</Panel>
+		
+	</Border>
+</UserControl>

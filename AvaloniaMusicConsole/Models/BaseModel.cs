@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace AvaloniaMusicConsole.Models
 {
@@ -21,6 +22,7 @@ namespace AvaloniaMusicConsole.Models
         public string Name { get; set; }
         public string RootPath { get; set; }
         public bool IsDirectory { get; set; }
+        public string FullPath => Path.Combine(RootPath, Name);
         public override string ToString()
             => $"{Key} : {Name} : {RootPath} : {IsDirectory}";
         

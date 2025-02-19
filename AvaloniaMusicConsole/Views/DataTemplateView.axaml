@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="200"
              x:Class="AvaloniaMusicConsole.Views.DataTemplateView"
 			 xmlns:data="using:AvaloniaMusicConsole.DataTemplates"
 			 xmlns:vm="using:AvaloniaMusicConsole.ViewModels"
@@ -17,21 +17,30 @@
 		<Panel>
 			<ContentControl 
 				x:Name="contentControl"
-				Content="{Binding $parent.DataContext}">
+				Content="{Binding $parent.((vm:AlbumViewModel)DataContext).SelectedAlbum}">
 				<ContentControl.ContentTemplate>
 					<data:ModelTemplateSelector>
+						
 						<DataTemplate  x:Key="AlbumViewModel" DataType="vm:AlbumViewModel">
-							<ItemsControl
-								ItemsSource="{Binding Albums , UpdateSourceTrigger=PropertyChanged} ">
-								<ItemsControl.ItemsPanel>
+							<StackPanel Spacing="2">
+								<TextBlock Text="{Binding Title, StringFormat=SEE AlbumViewModel: {0}}"
+										   VerticalAlignment="Top"
+										   HorizontalAlignment="Center"
+										   Margin="0,2"/>
+							<ListBox
+								Margin="10"
+								SelectionMode="Single"
+								ScrollViewer.VerticalScrollBarVisibility="Auto"
+								ItemsSource="{Binding Albums} ">
+								<ListBox.ItemsPanel>
 									<ItemsPanelTemplate>
 										<WrapPanel 
 											Margin="20" 
 											VerticalAlignment="Stretch" 
 											HorizontalAlignment="Stretch"/>
 									</ItemsPanelTemplate>
-								</ItemsControl.ItemsPanel>
-								<ItemsControl.ItemTemplate>
+								</ListBox.ItemsPanel>
+								<ListBox.ItemTemplate>
 									<DataTemplate DataType="vm:AlbumViewModel">
 										<Button 
 											CornerRadius="10"
@@ -39,7 +48,9 @@
 											Width="100"
 											Margin="10"
 											VerticalContentAlignment="Center"
-											HorizontalContentAlignment="Center">
+											HorizontalContentAlignment="Center"
+											Command="{Binding SelectionChange}"
+											CommandParameter="{Binding .}">
 											<TextBlock 
 												Foreground="Coral"
 												Background="Transparent"
@@ -48,9 +59,12 @@
 												TextWrapping="WrapWithOverflow"/>
 										</Button>
 									</DataTemplate>
-								</ItemsControl.ItemTemplate>
-							</ItemsControl>
+								</ListBox.ItemTemplate>
+							</ListBox>
+
+							</StackPanel>
 						</DataTemplate>
+						
 						<DataTemplate x:Key="ArtistViewModel" DataType="vm:AlbumViewModel">
 							<TextBlock
 								Text="Nothing to display"
@@ -63,7 +77,7 @@
 									 SelectionMode="Single">
 								<ListBox.ItemsPanel>
 									<ItemsPanelTemplate>
-										<StackPanel Spacing="5"/>
+										<StackPanel Spacing="5" Orientation="Vertical" />
 									</ItemsPanelTemplate>
 								</ListBox.ItemsPanel>
 							</ListBox>
